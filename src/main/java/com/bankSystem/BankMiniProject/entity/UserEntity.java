@@ -16,6 +16,8 @@ public class UserEntity {
 
     @Column(name = "name",nullable = false)
     private String name;
+    @Column(name = "username",nullable = false)
+    private String username;
     @Column(name = "phone_number",nullable = false)
     private String phoneNumber;
     @Column(name = "email",nullable = false)
@@ -26,6 +28,8 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status",nullable = false)
     private Status status;
+    @Column(name = "password",nullable = false)
+    private String password;
 
 
     @OneToMany
@@ -45,10 +49,8 @@ public class UserEntity {
     private RoleEntity role;
 
 
-    @Column(nullable = false)
-    private String password;
-    @Column(name = "username",nullable = false)
-    private String username;
+
+
     public java.lang.String getEmail() {
         return email;
     }

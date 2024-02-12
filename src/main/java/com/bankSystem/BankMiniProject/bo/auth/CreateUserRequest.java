@@ -1,11 +1,12 @@
 package com.bankSystem.BankMiniProject.bo.auth;
 
 public class CreateUserRequest {
-
+    private String password;
         private String name;
         private String email;
-        private String phone;
+        private String phoneNumber;
         private String status ;
+        private String username;
 
         public String getStatus() {
             return status;
@@ -32,14 +33,29 @@ public class CreateUserRequest {
             this.email = email;
         }
 
-        public java.lang.String getPhone() {
-            return phone;
+        public java.lang.String getPhoneNumber() {
+            return phoneNumber;
         }
 
-        public void setPhone(java.lang.String phone) {
-            this.phone = phone;
+        public void setPhoneNumber(java.lang.String phoneNumber) {
+            this.phoneNumber = phoneNumber;
         }
 
 
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}
 

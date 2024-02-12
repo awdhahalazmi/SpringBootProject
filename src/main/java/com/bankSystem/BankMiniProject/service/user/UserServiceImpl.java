@@ -1,20 +1,15 @@
 package com.bankSystem.BankMiniProject.service.user;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
 import com.bankSystem.BankMiniProject.bo.auth.CreateUserRequest;
 import com.bankSystem.BankMiniProject.bo.user.UpdateUserRequest;
 import com.bankSystem.BankMiniProject.bo.user.UserProfileResponse;
-import com.bankSystem.BankMiniProject.entity.BankAccountEntity;
 import com.bankSystem.BankMiniProject.entity.UserEntity;
 import com.bankSystem.BankMiniProject.repository.BankAccountRepository;
 import com.bankSystem.BankMiniProject.repository.UserRepository;
 import com.bankSystem.BankMiniProject.util.enums.Status;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -37,9 +32,11 @@ public class UserServiceImpl implements UserService{
     public void saveUser(CreateUserRequest createUserRequest) {
         UserEntity userEntity = new UserEntity();
         userEntity.setName(createUserRequest.getName());
+        userEntity.setUsername(createUserRequest.getUsername());
         userEntity.setEmail(createUserRequest.getEmail());
-        userEntity.setPhoneNumber(createUserRequest.getPhone());
-        if (!createUserRequest.getStatus().equals(Status.ACTIVE.name()) || !createUserRequest.getStatus().equals(Status.INACTIVE.name())) {
+        userEntity.setPassword(createUserRequest.getPassword() );
+        userEntity.setPhoneNumber(createUserRequest.getPhoneNumber());
+        if (!createUserRequest.getStatus().equals(Status.ACTIVE.name()) && !createUserRequest.getStatus().equals(Status.INACTIVE.name())) {
             throw new IllegalArgumentException("Status should be written either ACTIVE or INACTIVE");
 
         }
