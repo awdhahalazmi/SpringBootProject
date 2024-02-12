@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1/auth/admin")
 public class AdminController {
 
     private final UserService userService;
@@ -34,7 +34,7 @@ public class AdminController {
 
         return ResponseEntity.ok(userProfileResponse);
     }
-    @DeleteMapping("/delete-user/{id}")
+    @DeleteMapping("/delete_user/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id){
         userService.deleteUserById(id);
         return ResponseEntity.ok("user has been deleted successfully ");
